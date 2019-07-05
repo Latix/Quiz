@@ -23,11 +23,12 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
       appBar: AppBar(
-        title: AppBarText(barText: _barText,),
+        title: Text('Test 1'),
         backgroundColor: Color.fromARGB(255, 14, 13, 72),
       ),
       body: Column(
         children: <Widget>[
+          AppBarText(barText: _barText,),
           ButtonChange(_changeText),
         ],
         ),
