@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget{
     return MaterialApp(
       home: Scaffold(
       appBar: AppBar(
-        title: Text('Quiz App'),
+        title: Text('MyApp'),
         backgroundColor: Color.fromARGB(255, 14, 13, 72),
       ),
         body: Center(
