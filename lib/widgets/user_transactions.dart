@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import './transaction_list.dart';
 import './new_transaction.dart';
 import '../models/transaction.dart';
 class UserTransactions extends StatefulWidget {
@@ -40,7 +39,6 @@ class _UserTransactionsState extends State<UserTransactions> {
   Widget build(BuildContext context) {
       return Column(children: <Widget>[
         NewTransaction(_addNewTransaction),
-        TransactionList(_userTransactions),
       ],
     );
   }
