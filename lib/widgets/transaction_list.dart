@@ -10,18 +10,22 @@ class TransactionList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 300,
-      child: transactions.isEmpty ? Column(children: <Widget>[
-        Text('No transactions yet!',  style: Theme.of(context).textTheme.title),
-        SizedBox(height: 30),
-        Container(
-          height: 200,
-          child: Image.asset('./assets/images/work-wise.png', 
-          fit: BoxFit.cover,
-            ),
-          ),
-      ],) : ListView.builder(
+    final mediaQuery = MediaQuery.of(context);
+    return Card(
+      child: transactions.isEmpty ?
+        LayoutBuilder(builder: (context, constraints){
+          return Column(children: <Widget>[
+            Text('No transactions yet!',  style: Theme.of(context).textTheme.title),
+            SizedBox(height: 30),
+            Container(
+              height: constraints.maxHeight * 0.5,
+              child: Image.asset('./assets/images/work-wise.png', 
+              fit: BoxFit.cover,
+                ),
+              ),
+            ],
+          );
+        },) : ListView.builder(
         itemBuilder: (ctx, index) {
           return Card(
               elevation: 5,
@@ -41,7 +45,12 @@ class TransactionList extends StatelessWidget {
                 style: Theme.of(context).textTheme.title
                 ),
               subtitle: Text(DateFormat.yMMMd().format(transactions[index].date),),
-              trailing: IconButton(
+              trailing: mediaQuery.size.width > 360 ? FlatButton.icon(
+                icon: Icon(Icons.delete), 
+                label: Text('Delete'),
+                textColor: Theme.of(context).errorColor,
+                onPressed: () => deleteTx(transactions[index].id),
+              ) : IconButton(
                 icon: Icon(Icons.delete), 
                 color: Theme.of(context).errorColor,
                 onPressed: () => deleteTx(transactions[index].id),
