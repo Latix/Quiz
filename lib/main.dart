@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import './screens/categories_screen.dart';
+import './screens/category_meals_screen.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget{
@@ -8,15 +9,30 @@ class MyApp extends StatelessWidget{
   Widget build(BuildContext context){
     
     return MaterialApp(
-      home: Scaffold(
-      appBar: AppBar(
-        title: Text('Quiz App'),
-        backgroundColor: Color.fromARGB(255, 14, 13, 72),
-      ),
-        body: Center(
-          child: Text('Widget Playing Background'),
+      title: 'DeliMeals',
+      theme: ThemeData(
+        primarySwatch: Colors.pink,
+        accentColor: Colors.amber,
+        canvasColor: Color.fromRGBO(225, 254, 229, 1),
+        fontFamily: 'Workwise',
+        textTheme: ThemeData.light().textTheme.copyWith(
+          body1: TextStyle(
+            color: Color.fromRGBO(20, 51, 51, 1),
+          ),
+          body2: TextStyle(
+            color: Color.fromRGBO(20, 51, 51, 1),
+          ),
+          title: TextStyle(
+            fontSize: 20,
+          ),
         )
-      ), 
+      ),
+      home: CategoriesScreen(),
+      routes: {
+        // '/': (ctx) => CategoriesScreen(),
+        CategoryMeals.routeName: (ctx) => CategoryMeals(),
+      },
     ); 
   }
 }
+
