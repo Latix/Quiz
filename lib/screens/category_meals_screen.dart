@@ -3,7 +3,7 @@ import '../dummy_data.dart';
 import '../widgets/meal_item.dart';
 
 class CategoryMeals extends StatelessWidget {
-  static const routeName = '';
+  static const routeName = '/category-meals';
   // final String id;
   // final String title;
 
@@ -22,6 +22,7 @@ class CategoryMeals extends StatelessWidget {
       ),
       body: ListView.builder(itemBuilder: (ctx, index) {
         return MealItem(
+          id: categoryMeals[index].id, 
           title: categoryMeals[index].title, 
           imageUrl: categoryMeals[index].imageUrl, 
           duration: categoryMeals[index].duration, 
